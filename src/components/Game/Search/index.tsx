@@ -42,11 +42,11 @@ const Search = ({ onSelect }: Props): ReactElement => {
           !error &&
           data.characters.results
             .filter((character) => !ids.includes(character.id))
-            .map((el) => (
+            .map((character) => (
               <CardWrapper
                 as={Card}
-                key={el.id}
-                {...el}
+                key={character.id}
+                data={character}
                 onClick={onSelect}
                 onClose={({ id }: { id: number }) => {
                   setIds([...ids, id]);

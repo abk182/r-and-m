@@ -1,21 +1,19 @@
 import React, { ReactElement } from 'react';
-import { Container, Img, CrossStyled } from './styled';
 import Cross from 'components/ui-kit/Icon/Cross';
+import { Container, Img, CrossStyled, Placeholder } from './styled';
 
 export interface Props {
-  id: number;
-  image: string;
-  name: string;
-  onClick?: (args: Pick<Props, 'id' | 'name' | 'image'>) => void;
-  onClose?: (args: Pick<Props, 'id' | 'name' | 'image'>) => void;
+  data?: { id: number; image: string; name: string };
+  placeholder?: string;
+  onClick?: (args: Props['data']) => void;
+  onClose?: (args: Props['data']) => void;
   className?: string;
   style?: { [key: string]: string };
 }
 
 const Card = ({
-  id,
-  image,
-  name,
+  data,
+  placeholder,
   onClick,
   onClose,
   className,
@@ -23,14 +21,17 @@ const Card = ({
 }: Props): ReactElement<Props> => {
   return (
     <Container className={className} style={style}>
-      <CrossStyled as={Cross} onClick={() => onClose({ id, name, image })} />
-      <Img
-        src={image}
-        role="button"
-        onClick={() => {
-          onClick({ id, name, image });
-        }}
-      />
+      {onClose && <CrossStyled as={Cross} onClick={() => onClose(data)} />}
+      {data && (
+        <Img
+          src={data.image}
+          role="button"
+          onClick={() => {
+            onClick(data);
+          }}
+        />
+      )}
+      {!data && <Placeholder>{placeholder}</Placeholder>}
     </Container>
   );
 };

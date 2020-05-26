@@ -1,26 +1,29 @@
 import React, { ReactElement, useState } from 'react';
 import Search from './Search';
-import Party from './Party';
+import Card from 'components/Card';
+import { Container, Section, CardWrapper, Head1 } from './styled';
 
 const Game = (): ReactElement => {
-  const [selected, setSelected] = useState<
-    Array<null | { id: number; name: string; image: string }>
-  >([]);
-  console.log(selected);
+  const [rick, setRick] = useState<null | { id: number; name: string; image: string }>(null);
+  const [morty, setMorty] = useState<null | { id: number; name: string; image: string }>(null);
   return (
-    <>
+    <Container>
       <Search
-        onSelect={({ id, name, image }) => {
-          const [rick, morty] = selected;
-          if (name.toLowerCase().includes('rick')) {
-            setSelected([{ id, name, image }, morty]);
+        onSelect={(character) => {
+          if (character.name.toLowerCase().includes('rick')) {
+            setRick(character);
           }
-          if (name.toLowerCase().includes('morty')) {
-            setSelected([rick, { id, name, image }]);
+          if (character.name.toLowerCase().includes('morty')) {
+            setMorty(character);
           }
         }}
       />
-    </>
+      <Head1>PARTY</Head1>
+      <Section>
+        <CardWrapper as={Card} data={rick} placeholder="RICK" />
+        <CardWrapper as={Card} data={morty} placeholder="MORTY" />
+      </Section>
+    </Container>
   );
 };
 
