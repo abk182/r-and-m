@@ -1,5 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import Search from 'components/Search';
+import Party from 'components/Party';
 
 const Head1 = styled.h1`
   color: palevioletred;
@@ -8,7 +10,12 @@ const Head1 = styled.h1`
 `;
 
 const App = (): ReactElement => {
-  return <Head1>Hello!</Head1>;
+  return (
+    <>
+      <Search />
+      <Party />
+    </>
+  );
 };
 
 export default App;
