@@ -1,8 +1,6 @@
 import React, { ReactElement } from 'react';
-// import styled from 'styled-components';
-import ApolloClient, { gql } from 'apollo-boost';
-import Search from 'components/Search';
-import Party from 'components/Party';
+import ApolloClient from 'apollo-boost';
+import Game from 'components/Game';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
@@ -12,10 +10,7 @@ const client = new ApolloClient({
 const App = (): ReactElement => {
   return (
     <ApolloProvider client={client}>
-      <>
-        <Search />
-        <Party />
-      </>
+      <Game />
     </ApolloProvider>
   );
 };
