@@ -1,20 +1,22 @@
 import React, { ReactElement } from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import ApolloClient, { gql } from 'apollo-boost';
 import Search from 'components/Search';
 import Party from 'components/Party';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-const Head1 = styled.h1`
-  color: palevioletred;
-  font-size: 1.5em;
-  text-align: center;
-`;
+const client = new ApolloClient({
+  uri: 'https://rickandmortyapi.com/graphql',
+});
 
 const App = (): ReactElement => {
   return (
-    <>
-      <Search />
-      <Party />
-    </>
+    <ApolloProvider client={client}>
+      <>
+        <Search />
+        <Party />
+      </>
+    </ApolloProvider>
   );
 };
 
