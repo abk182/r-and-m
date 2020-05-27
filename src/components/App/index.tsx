@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import ApolloClient from 'apollo-boost';
 import Game from 'components/Game';
 import { ApolloProvider } from '@apollo/react-hooks';
-import './styled';
+import { GlobalStyles } from './styled';
 
 const client = new ApolloClient({
   uri: 'https://rickandmortyapi.com/graphql',
@@ -11,7 +11,10 @@ const client = new ApolloClient({
 const App = (): ReactElement => {
   return (
     <ApolloProvider client={client}>
-      <Game />
+      <>
+        <GlobalStyles />
+        <Game />
+      </>
     </ApolloProvider>
   );
 };

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 /* eslint-enable @typescript-eslint/no-var-requires*/
 
 module.exports = {
@@ -33,11 +34,17 @@ module.exports = {
       filename: 'index.html',
       template: './static/index.html',
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '/static/fonts'),
+        to: './fonts',
+      },
+    ]),
   ],
   devServer: {
     host: 'localhost',
     port: '4200',
-    contentBase: './static',
+    contentBase: path.join(__dirname, '/static'),
     historyApiFallback: true,
     hot: true,
     compress: true,
