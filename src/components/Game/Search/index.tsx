@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import TextInput from 'components/ui-kit/Input/Text';
-import Card, { Props as CardProps } from 'components/Card';
+import Card, { Props as CardProps } from 'components/Game/shared/Card';
 import { Container, Section, CardWrapper, Loading } from './styled';
 import CHARACTERS from './query';
 
