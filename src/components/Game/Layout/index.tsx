@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
 import Search from './Search';
-import Card from 'components/Game/shared/Card';
+import Card from 'components/Game/Card';
 import { Container, Section, CardWrapper, Head1 } from './styled';
 
 const Game = (): ReactElement => {
